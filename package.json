@@ -1,0 +1,19 @@
+{
+  "name": "s3",
+  "version": "1.0.0",
+  "description": "SatelliteSalesStars.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "Chris Murphy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
