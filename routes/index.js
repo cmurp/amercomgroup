@@ -22,7 +22,7 @@ router.get('/get-a-quote', (request, response) => {
 });
 
 router.get('/markets/:market', require('./markets.js'));
-router.post('services/:service', require('./services.js'));
-router.post('/products/:product', require('./products.js'));
+router.get('services/:service', require('./services.js'));
+router.get('/products/:product', require('./products.js'));
 
 module.exports = router;
