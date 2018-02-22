@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{title}}</title>
+        <title>{{title}} - AmerCom of the Triad</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
         <!-- Bulma Version 0.6.0 -->
@@ -32,13 +32,11 @@
                     <a class="navbar-item is-active">
                       Home
                     </a>
-                    <a class="navbar-item">
-                      Markets
-                    </a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" href="/Markets">
                           Markets
                         </a>
+                        <!-- need to loop all markets returned -->
                         <div class="navbar-dropdown is-boxed">
                           <a class="navbar-item" href="/documentation/overview/start/">
                             Overview
@@ -64,17 +62,71 @@
                           </a>
                         </div>
                   </div>
-                    <a class="navbar-item">
-                      Products
-                    </a>
-                    <a class="navbar-item">
+                  <div class="navbar-item has-dropdown is-hoverable">
+                      <a class="navbar-link" href="/Products">
+                        Products
+                      </a>
+                      <!-- need to loop all markets returned -->
+                      <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" href="/documentation/overview/start/">
+                          Overview
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
+                          Modifiers
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
+                          Columns
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
+                          Layout
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
+                          Form
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
+                          Elements
+                        </a>
+                        <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
+                          Components
+                        </a>
+                      </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="/Markets">
                       Services
                     </a>
+                    <!-- need to loop all markets returned -->
+                    <div class="navbar-dropdown is-boxed">
+                      <a class="navbar-item" href="/documentation/overview/start/">
+                        Overview
+                      </a>
+                      <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
+                        Modifiers
+                      </a>
+                      <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
+                        Columns
+                      </a>
+                      <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
+                        Layout
+                      </a>
+                      <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
+                        Form
+                      </a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
+                        Elements
+                      </a>
+                      <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
+                        Components
+                      </a>
+                    </div>
+              </div>
                     <a class="navbar-item">
                       Promotions
                     </a>
                     <a class="navbar-item">
-                      Contact Us
+                      <i class="fa fa-phone-square"></i>&nbsp;Contact Us
                     </a>
                     <a class="navbar-item">
                       About Us
@@ -92,13 +144,14 @@
                   American Communications of the Triad
                 </h1>
                 <h2 class="subtitle">
-                   $this is the best software platform for running an internet business. We handle billions of dollars every year for forward-thinking businesses around the world.
+                   Your home for business entertainment solutions. We serve local businesess in industries ranging from offices to gyms to hotels.
+                   We understand your customer and employee needs and will work with you to provide an ideal experience for any industry.
                 </h2>
                 <div class="box">
 
                   <div class="field is-grouped">
                     <p class="control is-expanded">
-                      <input class="input" type="text" placeholder="Enter your email">
+                      <input class="input" type="text" placeholder="Subscribe for tips on providing optimal entertainment experiences!">
                     </p>
                     <p class="control">
                       <a class="button is-info">
@@ -112,6 +165,8 @@
             </div>
 
         </section>
-            <script async type="text/javascript" src="/js/burger.js"></script>
+        {{{body}}}
+        {{> footer}}
+        <script async type="text/javascript" src="/js/burger.js"></script>
     </body>
 </html>

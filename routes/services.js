@@ -1,3 +1,4 @@
 module.exports = function (req, res) {
-  // do stuff
+    console.log("TEST");
+    res.render('services/' + req.params.service);
 };
