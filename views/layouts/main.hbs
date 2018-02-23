@@ -11,160 +11,93 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
         <link rel="stylesheet" type="text/css" href="/css/landing.css">
         <link rel="stylesheet" type="text/css" href="/css/spacelab.css">
+        <style>
+        body {
+            background-color: white;
+        }
+        </style>
+        {{{_sections.css}}}
     </head>
     <body>
-        <section class="hero is-info is-fullheight">
-            <div class="hero-head">
-            <nav class="navbar">
-              <div class="container">
-                <div class="navbar-brand">
-                  <a class="navbar-item" href="../">
-                    <h1 style="font-weight: bold; font-size: 1.3rem"><i class="fa fa-certificate"></i> AmerCom</h1>
-                  </a>
-                  <span class="navbar-burger burger" data-target="navbarMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </span>
-                </div>
-                <div id="navbarMenu" class="navbar-menu">
-                  <div class="navbar-end">
-                    <a class="navbar-item is-active">
-                      Home
-                    </a>
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="/Markets">
-                          Markets
-                        </a>
-                        <!-- need to loop all markets returned -->
-                        <div class="navbar-dropdown is-boxed">
-                          <a class="navbar-item" href="/documentation/overview/start/">
-                            Overview
-                          </a>
-                          <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                            Modifiers
-                          </a>
-                          <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                            Columns
-                          </a>
-                          <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                            Layout
-                          </a>
-                          <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                            Form
-                          </a>
-                          <hr class="navbar-divider">
-                          <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                            Elements
-                          </a>
-                          <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-                            Components
-                          </a>
-                        </div>
-                  </div>
-                  <div class="navbar-item has-dropdown is-hoverable">
-                      <a class="navbar-link" href="/Products">
-                        Products
-                      </a>
-                      <!-- need to loop all markets returned -->
-                      <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="/documentation/overview/start/">
-                          Overview
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                          Modifiers
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                          Columns
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                          Layout
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                          Form
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                          Elements
-                        </a>
-                        <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-                          Components
-                        </a>
-                      </div>
-                </div>
+        <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="../">
+                <h1 style="font-weight: bold; font-size: 1.3rem"><i class="fa fa-certificate"></i> AmerCom</h1>
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item is-active">
+                  Home
+                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link" href="/Markets">
-                      Services
+                      Markets
                     </a>
-                    <!-- need to loop all markets returned -->
                     <div class="navbar-dropdown is-boxed">
-                      <a class="navbar-item" href="/documentation/overview/start/">
-                        Overview
+                      <a class="navbar-item" href="/Markets/Restaurants">
+                        Restaurants
                       </a>
-                      <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                        Modifiers
+                      <a class="navbar-item" href="/Markets/Hotels">
+                        Hotels
                       </a>
-                      <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                        Columns
+                      <a class="navbar-item is-active" href="/Markets/Gyms">
+                        Gyms
                       </a>
-                      <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                        Layout
+                      <a class="navbar-item is-active" href="/Markets/Offices">
+                        Offices
                       </a>
-                      <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                        Form
+                      <a class="navbar-item is-active" href="/Markets/Medical">
+                        Medical Facilities
                       </a>
-                      <hr class="navbar-divider">
-                      <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                        Elements
+                      <a class="navbar-item is-active" href="/Markets/Apartments">
+                        Apartments
                       </a>
-                      <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-                        Components
+                      <a class="navbar-item is-active" href="/Markets/Salons">
+                        Salons
+                      </a>
+                      <a class="navbar-item is-active" href="/Markets/Mobile-Homes">
+                        Mobile Home Parks
                       </a>
                     </div>
               </div>
-                    <a class="navbar-item">
-                      Promotions
-                    </a>
-                    <a class="navbar-item">
-                      <i class="fa fa-phone-square"></i>&nbsp;Contact Us
-                    </a>
-                    <a class="navbar-item">
-                      About Us
-                    </a>
-                  </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="/Services">
+                  Services
+                </a>
+                <div class="navbar-dropdown is-boxed">
+                  <a class="navbar-item" href="/Services/American_Communications">
+                    AmerCom for Business
+                  </a>
+                  <a class="navbar-item" href="/Services/American_Satellite_Concepts">
+                    American Satellite Concepts
+                  </a>
+                  <a class="navbar-item is-active" href="/Services/American_Wireless_Synergy">
+                    American Wireless Synergy
+                  </a>
                 </div>
-              </div>
-            </nav>
-            </div>
-
-            <div class="hero-body">
-            <div class="container has-text-centered">
-              <div class="column is-6 is-offset-3">
-                <h1 class="title">
-                  American Communications of the Triad
-                </h1>
-                <h2 class="subtitle">
-                   Your home for business entertainment solutions. We serve local businesess in industries ranging from offices to gyms to hotels.
-                   We understand your customer and employee needs and will work with you to provide an ideal experience for any industry.
-                </h2>
-                <div class="box">
-
-                  <div class="field is-grouped">
-                    <p class="control is-expanded">
-                      <input class="input" type="text" placeholder="Subscribe for tips on providing optimal entertainment experiences!">
-                    </p>
-                    <p class="control">
-                      <a class="button is-info">
-                        Notify Me
-                      </a>
-                    </p>
-                  </div>
-                </div>
+          </div>
+                <a class="navbar-item">
+                  Promotions
+                </a>
+                <a class="navbar-item">
+                  <i class="fa fa-phone-square"></i>&nbsp;Contact Us
+                </a>
+                <a class="navbar-item">
+                  About Us
+                </a>
               </div>
             </div>
-            </div>
-
-        </section>
+          </div>
+        </nav>
+        </div>
         {{{body}}}
         {{> footer}}
         <script async type="text/javascript" src="/js/burger.js"></script>

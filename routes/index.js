@@ -21,19 +21,14 @@ router.get('/get-a-quote', (request, response) => {
     response.render('quote', { title: 'Get a Quote' });
 });
 
-router.get('/services', (request, response) => {
-    response.render('services', { title: 'Services' });
-});
-router.get('/services/:service', require('./services.js'));
-
 router.get('/markets', (request, response) => {
-    response.render('markets', { title: 'Markets' });
+    response.render('markets/markets', { title: 'Markets' });
 });
 router.get('/markets/:market', require('./markets.js'));
 
-router.get('/products', (request, response) => {
-    response.render('products', { title: 'Products' });
+router.get('/services', (request, response) => {
+    response.render('services/services', { title: 'services' });
 });
-router.get('/products/:product', require('./products.js'));
+router.get('/services/:services', require('./services.js'));
 
 module.exports = router;
