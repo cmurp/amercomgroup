@@ -27,7 +27,7 @@ router.get('/markets', (request, response) => {
 router.get('/markets/:market', require('./markets.js'));
 
 router.get('/services', (request, response) => {
-    response.render('services/services', { title: 'services' });
+    response.render('services/services', { title: 'Services' });
 });
 router.get('/services/:services', require('./services.js'));
 
