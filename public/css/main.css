@@ -19,6 +19,13 @@ a{
 strong{
     color:black;
 }
-body > section:nth-child(4) > div > div > nav > div:nth-child(1) > div > a > p.title > i {
-    color:black
+.level{
+    border-bottom: 1px grey solid;
+}
+p.heading{
+    font-size:1.1rem;
+}
+p.title  {
+    color:black;
+    font-size:1.3rem;
 }
