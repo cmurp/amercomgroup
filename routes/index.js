@@ -24,7 +24,7 @@ router.get('/get-a-quote', (request, response) => {
 router.get('/markets', (request, response) => {
     response.render('markets/markets', { title: 'Markets' });
 });
-router.get('/markets/:market', require('./markets.js'));
+router.get('/markets/:markets', require('./markets.js'));
 
 router.get('/services', (request, response) => {
     response.render('services/services', { title: 'Services' });

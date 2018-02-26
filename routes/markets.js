@@ -22,7 +22,7 @@ module.exports = function (req, res) {
             res.render('markets/salons', { title: 'Salons' });
             break;
         case 'mobile-home-communities':
-            res.render('markets/mobile_homes', { title: 'Mobile Home Communities' });
+            res.render('markets/mobile-homes', { title: 'Mobile Home Communities' });
             break;
         default:
             res.render('markets/markets', { title: 'Markets' });
