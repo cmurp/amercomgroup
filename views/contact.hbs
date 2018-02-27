@@ -1,1 +1,132 @@
-<p>Contact Us</p>
+{{#section 'css'}}
+<script src="vendor/jquery.validate.min.js"></script>
+<style>
+    #pswd_info {
+        position:absolute;
+        bottom:-75px;
+        bottom: -115px\9; /* IE Specific */
+        right:55px;
+        width:250px;
+        padding:15px;
+        background:#fefefe;
+        font-size:.875em;
+        border-radius:5px;
+        box-shadow:0 1px 3px #ccc;
+        border:1px solid #ddd;
+    }
+
+    #pswd_info h4 {
+        margin:0 0 10px 0;
+        padding:0;
+        font-weight:normal;
+    }
+
+    #pswd_info::before {
+        content: "\25B2";
+        position:absolute;
+        top:-12px;
+        left:45%;
+        font-size:14px;
+        line-height:14px;
+        color:#ddd;
+        text-shadow:none;
+        display:block;
+    }
+
+    .invalid {
+        background:url(../images/invalid.png) no-repeat 0 50%;
+        padding-left:22px;
+        line-height:24px;
+        color:#ec3f41;
+    }
+    .valid {
+        background:url(../images/valid.png) no-repeat 0 50%;
+        padding-left:22px;
+        line-height:24px;
+        color:#3a7d34;
+    }
+    .error{
+         display:none;
+         color:red;
+    }
+</style>
+
+{{/section}}
+<section class="hero is-info is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+              CONTACT US
+            </h1>
+            <h2 class="subtitle">
+              Take the First Step & Call Today for a Free Quote 336-328-5887!
+            </h2>
+            <h2 class="subtitle">
+              Or leave us a message below.
+            </h2>
+            <div class="field">
+              <p class="control has-icons-left">
+                <input class="input" type="text" placeholder="Name">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Email">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <input class="input" type="text" placeholder="Subject">
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <textarea class="textarea" placeholder="Explain how we can help you!"></textarea>
+                </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button is-info">
+                  SEND
+                </button>
+              </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $( "#postit" ).click(function() {
+        $("#error-length").hide();
+        $("#error-num").hide();
+        $("#error-match").hide();
+
+        console.log('page test');
+        // The two password inputs
+        var password = $("#register-password").val();
+        var confirmPassword = $("#register-pass-confirm").val();
+
+        if(password.length < 5){
+            $("#error-length").show();
+        }
+        else{
+            if(/\d/.test(password)){
+                if (password != confirmPassword ) {
+                    $("#error-match").show();
+                } else {
+                    console.log('hmmm');
+                    $.post( "/test" );
+                }
+            }
+            else{
+                $("#error-num").show();
+            }
+        }
+    });
+</script>
