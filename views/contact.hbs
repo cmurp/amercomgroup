@@ -1,5 +1,4 @@
 {{#section 'css'}}
-<script src="vendor/jquery.validate.min.js"></script>
 <style>
     #pswd_info {
         position:absolute;
@@ -50,7 +49,6 @@
          color:red;
     }
 </style>
-
 {{/section}}
 <section class="hero is-info is-fullheight">
     <div class="hero-body">
@@ -100,7 +98,7 @@
         </div>
     </div>
 </section>
-
+{{> quote}}
 <script>
     $( "#postit" ).click(function() {
         $("#error-length").hide();

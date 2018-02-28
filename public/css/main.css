@@ -29,3 +29,18 @@ p.title  {
     color:black;
     font-size:1.3rem;
 }
+.quote{
+    position:fixed;
+    bottom: 0;
+    left: 10%;
+    background-color: #00a6d6;
+    font-weight: bold;
+    font-size:1.3rem;
+}
+.is-info{
+    background-color: #00a6d6;
+}
+.hero-body > .container{
+    background-color: rgba(0,0,0,.0);
+    padding: 2%;
+}

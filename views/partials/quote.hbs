@@ -1,0 +1,18 @@
+<button class="quote button is-medium animated slideInLeft">Get a Quote!</button>
+<script>
+    $('.quote').click(function() {
+        swal({
+          title: 'Multiple inputs',
+          html:
+            '<input id="swal-input1" class="swal2-input">' +
+            '<input id="swal-input2" class="swal2-input">',
+          focusConfirm: false,
+          preConfirm: () => {
+            return [
+              $('#swal-input1').val(),
+              $('#swal-input2').val()
+            ]
+          }
+        })
+    });
+</script>
