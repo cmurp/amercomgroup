@@ -1,18 +1,81 @@
-<button class="quote button is-medium animated slideInLeft">Get a Quote!</button>
+<button class="quote button is-medium is-info animated slideInLeft">Get a Quote!</button>
 <script>
     $('.quote').click(function() {
-        swal({
-          title: 'Multiple inputs',
-          html:
-            '<input id="swal-input1" class="swal2-input">' +
-            '<input id="swal-input2" class="swal2-input">',
-          focusConfirm: false,
-          preConfirm: () => {
-            return [
-              $('#swal-input1').val(),
-              $('#swal-input2').val()
-            ]
-          }
-        })
-    });
+        var success = false;
+        swal.setDefaults({
+  confirmButtonText: 'Next &rarr;',
+  showCancelButton: true,
+  animation: false,
+  customClass: 'animated tada',
+  progressSteps: ['1', '2', '3', '4']
+})
+const ipAPI = 'https://api.ipify.org?format=json'
+var steps = [
+    {
+        title:'Name',
+        input:'text',
+        inputValidator: (value) => {
+            return !value && "You don't have a name?"
+  }
+    },
+    {
+        title:'Email',
+        input:'email'
+    },
+    {
+        title:'Phone',
+        input:'text',
+        inputValidator: (value) => {
+            return !value && "We promise not to call unless you've asked :)"
+        }
+    },
+    {
+        title: 'Property Type',
+        input: 'select',
+        inputOptions: {
+            'Residential':'Residential',
+            'Apartments':'Apartments',
+            'Gym':'Gym',
+            'Hotel':'Hotel',
+            'Medical':'Medical',
+            'Mobile-Home':'Mobile-Home',
+            'Offices':'Offices',
+            'Restaurant':'Restaurant',
+            'Salon':'Salon'
+        },
+        inputPlaceholder: 'Select a property type',
+        inputValidator: (value) => {
+            return new Promise((resolve) => {
+              if (value) {
+                resolve()
+              } else {
+                resolve('You need to select a property type :)')
+              }
+            })
+        },
+        showLoaderOnConfirm: true,
+        confirmButtonText: 'Confirm &#10004;',
+        preConfirm: () => {
+          return
+           }
+    }
+]
+
+swal.queue(steps).then((result) => {
+  swal.resetDefaults()
+  $.get({
+    type: 'POST',
+    data: JSON.stringify(result.value),
+    contentType: 'application/json',
+    url: 'http://localhost:3000/quotes',
+    success: function(data) {
+        swal(
+          'Thanks!',
+          'Your quote will be emailed shortly!',
+          'success'
+            )
+           }
+  })
+})
+});
 </script>

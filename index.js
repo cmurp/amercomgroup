@@ -29,6 +29,12 @@ const flash    = require('connect-flash');
 //FORM HANDLING CODE
 app.use(require('body-parser')());
 
+app.post('/quotes', function(req, res){
+	var obj = {};
+	console.log('body: ' + JSON.stringify(req.body));
+	res.send(req.body);
+});
+
 app.use(session({
     cookieName: 'session',
     secret: process.env.COOKIE_SECRET,
