@@ -4,7 +4,7 @@ var mail = require('./mail.js');
 
 router.post('/quotes', (req, res) => {
 	console.log('body: ' + req.body);
-	res.render('email/quote', { layout: null } , function(err,html){
+	res.render('email/request', { layout: null } , function(err,html){
         if( err ) console.log('error in email template');
 		mail.sendMail('Michael Gibson', 'rajonwitness@gmail.com', 'rajonwitness@gmail.com', 'Someone requested a quote!', html, req.body);
 		res.redirect('/');

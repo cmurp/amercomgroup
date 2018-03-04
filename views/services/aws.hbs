@@ -24,7 +24,8 @@
         <div class="description has-text-centered">
             <h2><strong>AT&T Mobility</strong></h2>
             <p>From smartphones and accessories, to wearables and smart technology, these deals from AT&T are too good to pass up. We offer the same services as the chain stores at better prices and more hands on service. </p>
-            <p><a href="/get-a-quote">Get a quote today!</a></p>
+            <br>
+            <button class="get-quote button is-info">Get a Quote!</button>
         </div>
     </div>
 </section>
@@ -48,7 +49,99 @@
         <div class="description has-text-centered">
             <h2><strong>Smart Home Solutions</strong></h2>
             <p>We also deliver and install smart devices for an enhanced modern living experience. From audio to lighting to energy, we can help you bring your home into the 21st century.</p>
-            <p><a href="/contact-us">Contact Us today for more information!</a></p>
+            <br>
+            <a href="/contact-us">
+                <button class="button is-info">
+                    <span class="icon"><i class="fa fa-phone"></i></span><strong>Contact Us</strong>
+                </button>
+            </a>
         </div>
     </div>
 </section>
+
+<script>
+   $('.get-quote').click(function() {
+       var success = false;
+       swal.setDefaults({
+ confirmButtonText: 'Next &rarr;',
+ showCancelButton: true,
+ animation: false,
+ customClass: 'animated jackInTheBox',
+ progressSteps: ['1', '2', '3', '4']
+})
+const ipAPI = 'https://api.ipify.org?format=json'
+var submitted = false;
+var steps = [
+   {
+       title:'Name',
+       input:'text',
+       inputValidator: (value) => {
+           return !value && "You don't have a name?"
+ }
+   },
+   {
+       title:'Email',
+       input:'email'
+   },
+   {
+       title:'Phone',
+       input:'text',
+       inputValidator: (value) => {
+           return !value && "We promise not to call unless you've asked :)"
+       }
+   },
+   {
+       title: 'Property Type',
+       input: 'select',
+       inputOptions: {
+           'Residential':'Residential',
+           'Apartments':'Apartments',
+           'Gym':'Gym',
+           'Hotel':'Hotel',
+           'Medical':'Medical',
+           'Mobile-Home':'Mobile-Home',
+           'Offices':'Offices',
+           'Restaurant':'Restaurant',
+           'Salon':'Salon'
+       },
+       inputPlaceholder: 'Select a property type',
+       inputValidator: (value) => {
+           return new Promise((resolve) => {
+             if (value) {
+               resolve()
+             } else {
+               resolve('You need to select a property type :)')
+             }
+           })
+       },
+       showLoaderOnConfirm: true,
+       confirmButtonText: 'Confirm &#10004;',
+       preConfirm: () => {
+           submitted = true;
+           return;
+          }
+   }
+]
+
+swal.queue(steps).then((result) => {
+ swal.resetDefaults()
+ if(submitted){
+     $.get({
+       type: 'POST',
+       data: JSON.stringify(result.value),
+       contentType: 'application/json',
+       url: 'http://localhost:3000/quotes',
+       success: function(data) {
+           swal(
+             'Thanks!',
+             'Your quote will be emailed shortly!',
+             'success'
+               ).then((result) => {
+                   window.location.replace("/");
+               })
+              }
+     })
+ }
+})
+});
+</script>

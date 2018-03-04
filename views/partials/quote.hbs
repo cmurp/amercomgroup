@@ -56,28 +56,31 @@ var steps = [
         showLoaderOnConfirm: true,
         confirmButtonText: 'Confirm &#10004;',
         preConfirm: () => {
-          return
+            submitted = true;
+            return;
            }
     }
 ]
 
 swal.queue(steps).then((result) => {
   swal.resetDefaults()
-  $.get({
-    type: 'POST',
-    data: JSON.stringify(result.value),
-    contentType: 'application/json',
-    url: 'http://localhost:3000/quotes',
-    success: function(data) {
-        swal(
-          'Thanks!',
-          'Your quote will be emailed shortly!',
-          'success'
-            ).then((result) => {
-                window.location.replace("/");
-            })
-           }
-  })
+  if(submitted){
+      $.get({
+        type: 'POST',
+        data: JSON.stringify(result.value),
+        contentType: 'application/json',
+        url: 'http://localhost:3000/quotes',
+        success: function(data) {
+            swal(
+              'Thanks!',
+              'Your quote will be emailed shortly!',
+              'success'
+                ).then((result) => {
+                    window.location.replace("/");
+                })
+               }
+      })
+  }
 })
 });
 </script>
