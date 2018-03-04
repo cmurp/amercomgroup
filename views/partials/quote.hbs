@@ -1,4 +1,4 @@
-<button class="quote button is-medium is-info animated slideInLeft">Get a Quote!</button>
+<button class="quote button is-small is-info animated slideInLeft">Get a Quote!</button>
 <script>
     $('.quote').click(function() {
         var success = false;
@@ -6,7 +6,7 @@
   confirmButtonText: 'Next &rarr;',
   showCancelButton: true,
   animation: false,
-  customClass: 'animated tada',
+  customClass: 'animated jackInTheBox',
   progressSteps: ['1', '2', '3', '4']
 })
 const ipAPI = 'https://api.ipify.org?format=json'
@@ -73,7 +73,9 @@ swal.queue(steps).then((result) => {
           'Thanks!',
           'Your quote will be emailed shortly!',
           'success'
-            )
+            ).then((result) => {
+                window.location.replace("/");
+            })
            }
   })
 })

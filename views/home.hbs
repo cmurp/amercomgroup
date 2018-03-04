@@ -10,13 +10,12 @@
                We understand your customer and employee needs and will work with you to provide an ideal experience for any industry.
             </h2>
             <div class="box">
-
               <div class="field is-grouped">
                 <p class="control is-expanded">
-                  <input class="input" type="text" placeholder="Tips on optimal entertainment experiences!">
+                  <input id="email" class="input" type="email" placeholder="Email Newsletter!">
                 </p>
                 <p class="control">
-                  <a class="button is-info">
+                  <a class="subscribe button is-info">
                     Subscribe
                   </a>
                 </p>
@@ -26,3 +25,23 @@
         </div>
     </div>
 </section>
+<script>
+    $('.subscribe').click(function() {
+        var email = { email: $('#email').val() };
+        $.get({
+              type: 'POST',
+              data: JSON.stringify(email),
+              contentType: 'application/json',
+              url: '/subscribe',
+              success: function(data) {
+                  swal(
+                    'Thanks!',
+                    'Hot tips incoming!',
+                    'success'
+                ).then((result) => {
+                    window.location.replace("/");
+                })
+            }
+        });
+    });
+</script>
