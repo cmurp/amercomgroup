@@ -22,24 +22,18 @@ app.engine('.hbs', exphbs({
     }
 }))
 
-const session  = require('client-sessions');
-const passport = require('passport');
-const flash    = require('connect-flash');
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
+app.use(session({
+  name: 'server-session-cookie-id',
+  secret: process.env.COOKIE_SECRET,
+  saveUninitialized: true,
+  resave: true
+}));
 
 //FORM HANDLING CODE
 app.use(require('body-parser')());
 app.use(require('./routes/post.js'));
-
-app.use(session({
-    cookieName: 'session',
-    secret: process.env.COOKIE_SECRET,
-    duration: 30 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000,
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());    // persistent login sessions
-app.use(flash());               // use connect-flash for flash messages stored in session
 
 // DOMAIN CODE for handling uncaught exceptions
 app.use(function(req, res, next){

@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var mail = require('./mail.js');
 // sendMail = function(name, recipient, sender, subject, text, message)
+require('dotenv').config({path: '../config/.env'})
 
 router.post('/quotes', (req, res) => {
 	console.log('body: ' + req.body);
@@ -25,6 +26,16 @@ router.post('/contact', (req, res) => {
         mail.sendMail(req.body.name, 'rajonwitness@gmail.com', req.body.email, req.body.subject, html, req.body.message);
 		res.redirect('/');
     });
+});
+
+router.post('/admin', (req, res) => {
+	if(req.body.password == process.env.password){
+		req.session.user = true;
+		res.send(true);
+	}
+	else{
+		res.send(false);
+	}
 });
 
 module.exports = router;

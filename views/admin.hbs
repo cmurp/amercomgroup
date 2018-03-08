@@ -1,0 +1,51 @@
+<section class="hero is-info is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <h1 class="title">
+              Admin Sign On
+            </h1>
+            <div class="box">
+              <div class="field is-grouped">
+                <p class="control is-expanded">
+                  <input id="password" class="input" type="password" placeholder="password">
+                </p>
+                <p class="control">
+                  <a class="login button is-info">
+                    Login
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+<script>
+    $('.login').click(function() {
+        var pword = { password: $('#password').val() };
+        $.get({
+              type: 'POST',
+              data: JSON.stringify(pword),
+              contentType: 'application/json',
+              url: '/admin',
+              success: function(data) {
+                  if(data == true){
+                      swal(
+                        'Thanks!',
+                        'Hot tips incoming!',
+                        'success'
+                    );
+                    window.location.replace("/post");
+                }
+                else{
+                    swal({
+                        title: 'WRONG',
+                        text: "Try Again!",
+                        type: 'error'
+                    });
+              }
+            }
+        })
+    });
+</script>
