@@ -127,5 +127,22 @@ router.post('/upload', (req, res) => {
     });
 });
 
+router.post('/delete', (req, res) => {
+	var filePath = "./public/posts/" + req.body.file;
+	fs.readFile(filePath, 'utf8', function(err, contents) {
+		res.render('email/deleted', { layout: null } , function(err,html){
+			if( err ) console.log('error in email template');
+			mail.sendMail('Chris Murphy', 'rajonwitness@gmail.com', 'rajonwitness@gmail.com', 'FILE DELETED: ' + filePath, html, contents);
+		});
+	});
+	fs.unlink(filePath, (err) => {
+		if (err) {
+			res.send(false);
+		}
+  		else{
+			res.send(true);
+		}
+	});
+});
 
 module.exports = router;

@@ -1,0 +1,112 @@
+{{#section 'css'}}
+<style>
+    #pswd_info {
+        position:absolute;
+        bottom:-75px;
+        bottom: -115px\9; /* IE Specific */
+        right:55px;
+        width:250px;
+        padding:15px;
+        background:#fefefe;
+        font-size:.875em;
+        border-radius:5px;
+        box-shadow:0 1px 3px #ccc;
+        border:1px solid #ddd;
+    }
+
+    #pswd_info h4 {
+        margin:0 0 10px 0;
+        padding:0;
+        font-weight:normal;
+    }
+
+    #pswd_info::before {
+        content: "\25B2";
+        position:absolute;
+        top:-12px;
+        left:45%;
+        font-size:14px;
+        line-height:14px;
+        color:#ddd;
+        text-shadow:none;
+        display:block;
+    }
+
+    .invalid {
+        background:url(../images/invalid.png) no-repeat 0 50%;
+        padding-left:22px;
+        line-height:24px;
+        color:#ec3f41;
+    }
+    .valid {
+        background:url(../images/valid.png) no-repeat 0 50%;
+        padding-left:22px;
+        line-height:24px;
+        color:#3a7d34;
+    }
+    .error{
+         display:none;
+         color:red;
+    }
+</style>
+{{/section}}
+<section class="hero is-info is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+              DELETE A POST
+            </h1>
+            <br>
+            <br>
+            <div class="field is-grouped-centered">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select id="file">
+                        {{#each list}}
+                            <option>{{this}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="control">
+                    <button id="send" class="button is-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $( "#send" ).click(function() {
+        var msg = {file: $('#file').val()};
+        console.log(msg);
+        $.get({
+          type: 'POST',
+          data: JSON.stringify(msg),
+          contentType: 'application/json',
+          url: 'http://localhost:3000/delete',
+          success: function(data) {
+              if(data == true){
+                  swal({
+                      title: 'DELETED!',
+                      type: 'success',
+                      text: 'The post has been emailed to you in case you change your mind!',
+                      focusConfirm: false,
+                      customClass: 'animated jackInTheBox',
+                      confirmButtonText:
+                        '<i class="fa fa-thumbs-up"></i> Great!',
+                      confirmButtonAriaLabel: 'Thumbs up, great!',
+                    }).then((result) => {
+                        window.location.replace("/posts/main");
+                    })
+                }
+            else{
+                swal({
+                    title: 'ERROR',
+                    text: "Couldn't delete file, idk why tbh.",
+                    type: 'error'
+                });
+                }
+            }
+        })
+    });
+</script>

@@ -32,14 +32,11 @@ router.get('/services', (request, response) => {
 router.get('/services/:services', require('./services.js'));
 
 router.get('/admin', (request, response) => {
-    response.render('admin', { title: 'ADMIN' });
-});
-router.get('/post', (request, response) => {
     if(request.session.user == true){
-        response.render('post', { title: 'Post' });
+        response.render('admin', { admin: true, title: 'ADMIN' });
     }
     else{
-        response.render('admin', { title: 'ADMIN' });
+        response.render('admin', { admin: false, title: 'ADMIN' });
     }
 });
 router.get('/posts', (request, response) => {
