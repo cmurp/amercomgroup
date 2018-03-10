@@ -1,5 +1,6 @@
 html,body {
-  font-family: 'Open Sans', serif;
+    font-family: 'Source sans Pro', sans-serif;
+  /*font-family: 'Source Serif Pro', serif;*/
 }
 .hero.is-info {
   background: linear-gradient(

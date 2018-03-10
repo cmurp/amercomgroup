@@ -1,5 +1,12 @@
-var router = require('express').Router();
-var mail = require('./mail.js');
+const router = require('express').Router();
+const fs = require('fs');
+const formidable = require('formidable');
+const multer = require('multer');
+const mail = require('./mail.js');
+const fileType = require('file-type');
+const readChunk = require('read-chunk');
+var path = require("path");
+var util = require('util');
 // sendMail = function(name, recipient, sender, subject, text, message)
 require('dotenv').config({path: '../config/.env'})
 
@@ -37,5 +44,88 @@ router.post('/admin', (req, res) => {
 		res.send(false);
 	}
 });
+
+router.post('/post', (req, res) => {
+	// write to a new file named 2pac.txt
+	fs.writeFile('./public/posts/' + req.body.title + '.html', req.body.message, (err) => {
+	    // throws an error, you could also catch it here
+	    if (err) {
+			throw err;
+			res.send(false);
+		}
+		else{
+			res.send(true);
+		}
+	});
+});
+
+router.post('/upload', (req, res) => {
+    var photos = [],
+        form = new formidable.IncomingForm();
+
+    // Tells formidable that there will be multiple files sent.
+    form.multiples = true;
+    // Upload directory for the images
+    form.uploadDir = path.join(__dirname, 'tmp_uploads');
+
+    // Invoked when a file has finished uploading.
+    form.on('file', function (name, file) {
+        // Allow only 3 files to be uploaded.
+        if (photos.length === 3) {
+            fs.unlink(file.path);
+            return true;
+        }
+
+        var buffer = null,
+            type = null,
+            filename = '';
+
+        // Read a chunk of the file.
+        buffer = readChunk.sync(file.path, 0, 262);
+        // Get the file type using the buffer read using read-chunk
+        type = fileType(buffer);
+		console.log(file.path, type.ext);
+
+
+        // Check the file type, must be either png,jpg or jpeg
+        if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
+            // Assign new file name
+            filename = file.name;
+
+            // Move the file with the new file name
+            fs.rename(file.path, './public/images/' + filename);
+
+            // Add to the list of photos
+            photos.push({
+                status: true,
+                filename: filename,
+                type: type.ext,
+                publicPath: 'uploads/' + filename
+            });
+        } else {
+            photos.push({
+                status: false,
+                filename: file.name,
+                message: 'Invalid file type'
+            });
+            fs.unlink(file.path);
+        }
+    });
+
+    form.on('error', function(err) {
+        console.log('Error occurred during processing - ' + err);
+    });
+
+    // Invoked when all the fields have been processed.
+    form.on('end', function() {
+        console.log('All the request fields have been processed.');
+    });
+
+    // Parse the incoming form fields.
+    form.parse(req, function (err, fields, files) {
+        res.send(true);
+    });
+});
+
 
 module.exports = router;

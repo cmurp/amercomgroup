@@ -32,11 +32,11 @@
               success: function(data) {
                   if(data == true){
                       swal(
-                        'Thanks!',
-                        'Hot tips incoming!',
+                        'Nice!',
                         'success'
-                    );
-                    window.location.replace("/post");
+                    ).then((data) => {
+                        window.location.replace("/post");
+                    })
                 }
                 else{
                     swal({

@@ -1,10 +1,14 @@
+var fs = require('fs');
 module.exports = function (req, res) {
     switch(req.params.post){
-        case 'restaurants':
-            res.render('markets/restaurants', { title: 'Restaurants' });
+        case 'main':
+            res.render('posts/main', { title: 'Restaurants' });
             break;
         default:
-            response.render('/posts/post', { title: 'Posts' });
+           fs.readFile('./public/posts/'+req.params.post+'.html', 'utf8', function(err, contents) {
+               console.log(contents);
+               res.render('posts/outline', { title: req.params.post, content: contents });
+           });
             break;
     }
 };
