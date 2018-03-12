@@ -45,3 +45,4 @@ jspm_packages
 
 #posts directory
 public/posts
+lib/tmp_uploads/*

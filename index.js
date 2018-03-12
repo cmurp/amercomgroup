@@ -33,7 +33,7 @@ app.use(session({
 
 //FORM HANDLING CODE
 app.use(require('body-parser')());
-app.use(require('./routes/post.js'));
+app.use(require('./lib/post.js'));
 
 // DOMAIN CODE for handling uncaught exceptions
 app.use(function(req, res, next){
@@ -81,7 +81,7 @@ app.set('views', path.join(__dirname, 'views'))
 // End Express boilerplatevar express = require('express');
 
 /* first arg is path, function runs when matched, request and response objects are passed to functions */
-app.use(require('./routes/index.js'));
+app.use(require('./lib/index.js'));
 
 // 500 error handler (middleware)
 app.use(function(err, req, res, next){

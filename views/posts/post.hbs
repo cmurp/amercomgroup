@@ -63,6 +63,18 @@
                     <input id="title" class="input is-large" type="text" placeholder="Title">
                 </p>
             </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <label class="label">Thumbnail</label>
+                    <div class="select is-fullwidth">
+                        <select id="file">
+                            {{#each list}}
+                                <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="field">
                 <p class="control">
                     <textarea id="message" class="textarea is-large" style="resize:vertical" cols="50" rows="25" placeholder="Click the help button below for HTML examples."></textarea>
@@ -88,7 +100,7 @@
 </section>
 <script>
     $( "#send" ).click(function() {
-        var msg = {title: $('#title').val(),message: $('#message').val()};
+        var msg = {title: $('#title').val(), message: $('#message').val(), file: $('#file').val()};
         var fls = 0;
         $.get({
           type: 'POST',
@@ -113,7 +125,7 @@
             else{
                 swal({
                     title: 'ERROR',
-                    text: "Couldn't write file, title is probably taken.",
+                    text: "Couldn't write file, make sure to fill out everything!",
                     type: 'error'
                 });
                 }
