@@ -61,9 +61,9 @@
             <div class="field is-grouped-centered">
                 <div class="control">
                   <div class="select is-fullwidth">
-                    <select id="file">
+                    <select id="blog">
                         {{#each list}}
-                            <option>{{this}}</option>
+                            <option>{{this.title}}</option>
                         {{/each}}
                     </select>
                   </div>
@@ -77,7 +77,7 @@
 </section>
 <script>
     $( "#send" ).click(function() {
-        var msg = {file: $('#file').val()};
+        var msg = {blog: $('#blog').val()};
         console.log(msg);
         $.get({
           type: 'POST',
@@ -102,7 +102,7 @@
             else{
                 swal({
                     title: 'ERROR',
-                    text: "Couldn't delete file, idk why tbh.",
+                    text: "Couldn't delete post, idk why tbh.",
                     type: 'error'
                 });
                 }

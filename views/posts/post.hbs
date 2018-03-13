@@ -101,7 +101,6 @@
 <script>
     $( "#send" ).click(function() {
         var msg = {title: $('#title').val(), message: $('#message').val(), file: $('#file').val()};
-        var fls = 0;
         $.get({
           type: 'POST',
           data: JSON.stringify(msg),

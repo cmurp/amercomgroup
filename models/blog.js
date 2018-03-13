@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mail = require('./mail.js');
+const mail = require('../lib/mail.js');
 
 //create schema
 var BlogSchema = mongoose.Schema({
