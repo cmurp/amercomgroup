@@ -16,5 +16,5 @@ BlogSchema.methods.posted = function(){
     });
 }
 // compile schema into model, used to create documents in the db
-var Blog = mongoose.model('Blog', BlogSchema)
+var Blog = mongoose.model('BlogPost', BlogSchema)
 module.exports = Blog;

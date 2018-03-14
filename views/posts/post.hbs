@@ -132,6 +132,7 @@
         })
     });
     $( "#help" ).click(function() {
+        console.log(Date.now);
         swal({
             title: 'HTML Help',
             html: 'To format something a certain way, you wrap it in <></> tags. Basic links can be found <a href="http://www.99lime.com/_bak/topics/you-only-need-10-tags/">here</a>. So to make a large title, use h1 in the tag, like this:<h1>&lt;h1>TITLE&lt;/h1></h1> To add lines between paragraphs, add br tags. To add an image, make sure to submit it using the file submit form below and then copy and paste this, and just edit the image name(MAKE SURE YOU GET THE FILE EXTENSION TOO): <br>&lt;figure class="image is-128x128"&gt;&lt;img src="/images/image.png"&gt;&lt;/figure&gt;',

@@ -35,6 +35,18 @@
         </div>
     </div>
 </section>
+<div class="level nav-buttons">
+    {{#if prev}}
+    <a class="level-left level-item" href="/posts/main?count={{prevval}}">
+        <button id="prev" class="button is-info">PREV</button>
+    </a>
+    {{/if}}
+    {{#if next}}
+    <a class="level-right level-item" href="/posts/main?count={{nextval}}">
+        <button id="next" class="button is-info">NEXT</button>
+    </a>
+    {{/if}}
+</div>
 
 <section class="section">
     <div class="container">
