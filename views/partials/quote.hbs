@@ -69,7 +69,7 @@ swal.queue(steps).then((result) => {
         type: 'POST',
         data: JSON.stringify(result.value),
         contentType: 'application/json',
-        url: 'http://localhost:3000/quotes',
+        url: '/quotes',
         success: function(data) {
             swal(
               'Thanks!',
