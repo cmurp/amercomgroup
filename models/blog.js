@@ -12,7 +12,7 @@ var BlogSchema = mongoose.Schema({
 BlogSchema.methods.posted = function(){
     res.render('email/blog', { layout: null } , function(err,html){
         if( err ) console.log('error in email template');
-        mail.sendMail('Michael Gibson', 'rajonwitness@gmail.com', 'rajonwitness@gmail.com', this.title, html, this.post);
+        mail.sendMail('Michael Gibson', process.env.EMAIL, process.env.EMAIL, this.title, html, this.post);
     });
 }
 // compile schema into model, used to create documents in the db
