@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const http = require('http')
+const helmet = require('helmet')
 
 //set env params
 require('dotenv').config({path: './config/.env'})
@@ -30,6 +31,8 @@ app.use(session({
   saveUninitialized: true,
   resave: true
 }));
+
+app.use(helmet());
 
 //FORM HANDLING CODE
 app.use(require('body-parser')());
