@@ -39,64 +39,64 @@
             </div>
             <div id="navbarMenu" class="navbar-menu">
               <div class="navbar-end">
-                <a class="navbar-item is-active" href="/">
-                  Home
-                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="/markets">
+                    <a id="Markets" class="navbar-link" href="/markets">
                       Markets
                     </a>
                     <div class="navbar-dropdown is-boxed">
-                      <a class="navbar-item" href="/markets/restaurants">
+                      <a id="Restaurants" class="navbar-item" href="/markets/restaurants">
                         Restaurants
                       </a>
-                      <a class="navbar-item" href="/markets/hotels">
+                      <a id="Hotels" class="navbar-item" href="/markets/hotels">
                         Hotels
                       </a>
-                      <a class="navbar-item" href="/markets/gyms">
+                      <a id="Gyms" class="navbar-item" href="/markets/gyms">
                         Gyms
                       </a>
-                      <a class="navbar-item" href="/markets/offices">
+                      <a id="Offices" class="navbar-item" href="/markets/offices">
                         Offices
                       </a>
-                      <a class="navbar-item" href="/markets/medical">
+                      <a  id="Medical" class="navbar-item" href="/markets/medical">
                         Medical Facilities
                       </a>
-                      <a class="navbar-item" href="/markets/apartments">
+                      <a id="Apartments" class="navbar-item" href="/markets/apartments">
                         Apartments
                       </a>
-                      <a class="navbar-item" href="/markets/salons">
+                      <a id="Salons" class="navbar-item" href="/markets/salons">
                         Salons
                       </a>
-                      <a class="navbar-item" href="/markets/mobile-home-communities">
+                      <a id="Mobile" class="navbar-item" href="/markets/mobile-home-communities">
                         Mobile Home Parks
                       </a>
                     </div>
               </div>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="/services">
+                <a id="Services" class="navbar-link" href="/services">
                   Services
                 </a>
                 <div class="navbar-dropdown is-boxed">
-                  <a class="navbar-item" href="/services/american-communications">
+                  <a id="AmerCom" class="navbar-item" href="/services/american-communications">
                     AmerCom for Business
                   </a>
-                  <a class="navbar-item" href="/services/american-satellite-concepts">
+                  <a id="ASC" class="navbar-item" href="/services/american-satellite-concepts">
                     American Satellite Concepts
                   </a>
-                  <a class="navbar-item" href="/services/american-wireless-synergy">
+                  <a id="AWS" class="navbar-item" href="/services/american-wireless-synergy">
                     American Wireless Synergy
                   </a>
                 </div>
           </div>
-                <a class="navbar-item" href="/promotions">
+                <a id="Promotions" class="navbar-item Promotions" href="/promotions">
                   Promotions
                 </a>
-                <a class="navbar-item" href="/contact-us">
-                  <i class="fa fa-phone-square"></i>&nbsp;Contact Us
+                <a id="Blog" class="navbar-item Blog" href="/posts/main">
+                  Blog
                 </a>
-                <a class="navbar-item" href="/about-us">
+                <a id="About" class="navbar-item" href="/about-us">
                   About Us
+                </a>
+                <a id="Contact" class="navbar-item" href="/contact-us">
+                  <i class="fa fa-phone-square"></i>&nbsp;Contact Us
                 </a>
               </div>
             </div>
@@ -107,5 +107,10 @@
         {{> quote}}
         {{> footer}}
         <script async type="text/javascript" src="/js/burger.js"></script>
+        <script>
+            var page = '{{title}}';
+            var words = page.split(" ");
+            $("#" + words).addClass("is-active");
+        </script>
     </body>
 </html>
